@@ -1,17 +1,15 @@
 import joblib
 from pathlib import Path
 
-MODEL_PATH = Path(__file__).resolve().parents[1] / "model" / "iris_model.pkl"
+# Point to the new synthetic model file
+MODEL_PATH = Path(__file__).resolve().parents[1] / "model" / "synthetic_model.pkl"
 
+# Load the model once when the module is imported
+model = joblib.load(MODEL_PATH)
 
 def predict_data(X):
     """
-    Predict the class labels for the input data.
-    Args:
-        X (numpy.ndarray): Input data for which predictions are to be made.
-    Returns:
-        y_pred (numpy.ndarray): Predicted class labels.
+    Predict the class labels for the input data using the pre-loaded model.
     """
-    model = joblib.load(MODEL_PATH)
     y_pred = model.predict(X)
     return y_pred
