@@ -20,8 +20,6 @@ The API is built to predict the class of a given sample based on four input feat
 
 ```
 .
-├── assets/
-│   └── data_distribution.png
 ├── model/
 │   └── synthetic_model.pkl
 ├── src/
