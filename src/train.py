@@ -1,18 +1,18 @@
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
 import joblib
 from data import load_data, split_data
 from pathlib import Path
 
 def fit_model(X_train, y_train):
     """
-    Train a Random Forest Classifier and save the model to a file.
+    Train a Support Vector Classifier and save the model to a file.
     Args:
         X_train (numpy.ndarray): Training features.
         y_train (numpy.ndarray): Training target values.
     """
-    # Use RandomForestClassifier
-    rf_classifier = RandomForestClassifier(n_estimators=100, random_state=42)
-    rf_classifier.fit(X_train, y_train)
+    # Use SVC instead
+    svm_classifier = SVC(kernel='rbf', random_state=42)
+    svm_classifier.fit(X_train, y_train)
 
     # Define the path to the model directory
     repo_root = Path(__file__).resolve().parents[1]
@@ -23,7 +23,7 @@ def fit_model(X_train, y_train):
     
     # Define the full path for the model file and save it
     model_path = model_dir / "synthetic_model.pkl"
-    joblib.dump(rf_classifier, model_path)
+    joblib.dump(svm_classifier, model_path)
     print(f"Model saved to {model_path}")
 
 if __name__ == "__main__":
